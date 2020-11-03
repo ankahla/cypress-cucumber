@@ -1,0 +1,7 @@
+{
+  "ignoreTestFiles": "*.js",
+  "testFiles": "**/*.{feature,features}",
+  "env": {
+    "URL": "https://www.francetv-preprod.fr"
+  }
+}
