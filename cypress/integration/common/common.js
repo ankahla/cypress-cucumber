@@ -1,13 +1,14 @@
 import {Given, When, Then} from "cypress-cucumber-preprocessor/steps";
-
-const SEARCH_INPUT_SELECTOR = ".c-primary-nav-search";
+import {SEARCH_INPUT_SELECTOR} from "./selector";
 
 Then(`I see {string} in the title`, title => {
     cy.title().should("include", title);
 });
 
 Then(`I see the text {string} in the page`, text => {
-    cy.get('body').should('contain.text', text);
+    //cy.get('body').should('contain.text', text);
+    //cy.contains(text).should('exist');
+    cy.contains(text).should('be.visible');
 });
 
 Given(`I open the url: {string}`, url => {
@@ -22,6 +23,18 @@ When(`I click on the search input`, () => {
     cy.get(SEARCH_INPUT_SELECTOR).click();
 });
 
+When(`I click on the {string} {string}`, (tag, label) => {
+    cy.get(tag).contains(label).click()
+});
+
 Then(`I am redirected to the uri {string}`, uri => {
     cy.location('pathname').should('eq', uri)
+});
+
+When(`I fill in {string} with {string}`, (inputName, value) => {
+    cy.get(`[name="${inputName}"]`).type(value);
+});
+
+When(`I wait for {int} second(s)`, delay => {
+    cy.wait(parseInt(delay) * 1000);
 });
