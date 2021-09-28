@@ -6,8 +6,6 @@ Then(`I see {string} in the title`, title => {
 });
 
 Then(`I see the text {string} in the page`, text => {
-    //cy.get('body').should('contain.text', text);
-    //cy.contains(text).should('exist');
     cy.contains(text).should('be.visible');
 });
 
@@ -29,10 +27,6 @@ When(`I click on the {string} {string}`, (tag, label) => {
 
 Then(`I am redirected to the uri {string}`, uri => {
     cy.location('pathname').should('eq', uri)
-});
-
-When(`I fill in {string} with {string}`, (inputName, value) => {
-    cy.get(`[name="${inputName}"]`).type(value);
 });
 
 When(`I wait for {int} second(s)`, delay => {

@@ -1,7 +1,7 @@
 @security
 Feature: Login page
 
-  I want to be able to login to my account
+  I want to be able to sign in to my account
 
   Background:
     Given I open the url: "/connexion/"
@@ -34,6 +34,18 @@ Feature: Login page
     | email                               | password        | message                                                                                         |
     | "kahla.anoir@gmail.com"             | "Test@12345678" | "Vos identifiants n’ont pas été reconnus. Faites un nouvel essai ou changez votre mot de passe" |
     | "unknown.email@unknown.domain.com"  | "Test@12345678" | "Nous n'avons pas de compte avec cet email. Êtes-vous certain d’être déjà inscrit ?"            |
+
+  Scenario Outline: Checking email field validation
+    When I fill in "login[email]" with <email>
+    And I click on the "button" "je me connecte"
+    Then I see the text <message> in the page
+
+    Examples:
+      | email                 | message                                     |
+      | "any text"            | "Veuillez saisir une adresse email valide." |
+      | "any++address@test.fr"| "Veuillez saisir une adresse email valide." |
+      | "test@voila.fr"       | "Veuillez saisir une adresse email valide." |
+      | "test@gmail.fr"       | "Veuillez saisir une adresse email valide." |
 
 
 
