@@ -5,7 +5,7 @@ Feature: The homepage
 
   Background:
     Given I am in the homepage
-    And I click on the "button" "continuer sans accepter"
+    And I click on the button "continuer sans accepter"
 
   @tag-to-include
   Scenario: Opening the homepage

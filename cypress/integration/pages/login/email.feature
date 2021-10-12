@@ -5,11 +5,11 @@ Feature: Email field in login page
 
   Scenario: Closing dedomi popup
     Given I open the url: "/connexion/"
-    And I click on the "button" "continuer sans accepter"
+    And I click on the button "continuer sans accepter"
 
   Scenario Outline: Checking email field validation
-    When I fill in "login[email]" with <email>
-    And I click on the "button" "je me connecte"
+    When I fill in login[email] with <email>
+    And I click on the button "je me connecte"
     Then I see the text <message> in the page
 
     Examples:

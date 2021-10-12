@@ -1,5 +1,13 @@
-import {Given, When, Then} from "cypress-cucumber-preprocessor/steps";
+import {Given, When, Then, defineParameterType} from "cypress-cucumber-preprocessor/steps";
 import {SEARCH_INPUT_SELECTOR} from "./selector";
+
+defineParameterType({
+    name: 'htmltag',
+    regexp: /div|label|button|link|p|input/,
+    transformer: s => {
+        return s;
+    }
+});
 
 Then(`I see {string} in the title`, title => {
     cy.title().should("include", title);
@@ -21,12 +29,12 @@ When(`I click on the search input`, () => {
     cy.get(SEARCH_INPUT_SELECTOR).click();
 });
 
-When(`I click on the {string} {string}`, (tag, label) => {
-    cy.get(tag).contains(label).click()
+When(`I click on the {htmltag} {string}`, (tag, label) => {
+    cy.get(tag).contains(label).click();
 });
 
 Then(`I am redirected to the uri {string}`, uri => {
-    cy.location('pathname').should('eq', uri)
+    cy.location('pathname').should('eq', uri);
 });
 
 When(`I wait for {int} second(s)`, delay => {

@@ -6,7 +6,7 @@ defineParameterType({
     transformer: s => {
         return s === 'red' ? 'c-check-container__criterion--unchecked' : 'c-check-container__criterion--checked';
     }
-})
+});
 
 defineParameterType({
     name: 'criterion',
@@ -14,8 +14,8 @@ defineParameterType({
     transformer: s => {
         return cy.contains('.c-check-container__criterion', s);
     }
-})
+});
 
 Then(`I see {criterion} criterion in {color}`, (criterion, color) => {
-    criterion.should('have.class', color)
+    criterion.should('have.class', color);
 });

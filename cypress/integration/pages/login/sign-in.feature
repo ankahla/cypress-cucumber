@@ -5,15 +5,15 @@ Feature: Login page
 
   Background:
     Given I open the url: "/connexion/"
-    And I click on the "button" "continuer sans accepter"
+    And I click on the button "continuer sans accepter"
     Then I see the text "Connectez-vous ici" in the page
 
   @successful-login
   Scenario Outline: Sign in to my account
-    When I fill in "login[email]" with <email>
-    And I fill in "login[password]" with <password>
-    And I click on the "label" "oui"
-    And I click on the "button" "je me connecte"
+    When I fill in login[email] with <email>
+    And I fill in login[password] with <password>
+    And I click on the label "oui"
+    And I click on the button "je me connecte"
     And I wait for 1 second
     Then I am redirected to the uri "/"
 
@@ -23,10 +23,10 @@ Feature: Login page
 
   @unsuccessful-login
   Scenario Outline: Checking error messages
-    When I fill in "login[email]" with <email>
-    And I fill in "login[password]" with <password>
-    And I click on the "label" "oui"
-    And I click on the "button" "je me connecte"
+    When I fill in login[email] with <email>
+    And I fill in login[password] with <password>
+    And I click on the label "oui"
+    And I click on the button "je me connecte"
     And I wait for 1 second
     Then I see the text <message> in the page
 
@@ -36,8 +36,8 @@ Feature: Login page
     | "unknown.email@unknown.domain.com"  | "Test@12345678" | "Nous n'avons pas de compte avec cet email. Êtes-vous certain d’être déjà inscrit ?"            |
 
   Scenario Outline: Checking email field validation
-    When I fill in "login[email]" with <email>
-    And I click on the "button" "je me connecte"
+    When I fill in login[email] with <email>
+    And I click on the button "je me connecte"
     Then I see the text <message> in the page
 
     Examples:
@@ -46,9 +46,3 @@ Feature: Login page
       | "any++address@test.fr"| "Veuillez saisir une adresse email valide." |
       | "test@voila.fr"       | "Veuillez saisir une adresse email valide." |
       | "test@gmail.fr"       | "Veuillez saisir une adresse email valide." |
-
-
-
-
-
-

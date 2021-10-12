@@ -1,33 +1,33 @@
 {
-  "name": "cypress-cucumber-example",
+  "name": "yatta-front-web-functional-tests",
   "version": "1.0.0",
-  "description": "Example of cypress with cucumber",
+  "description": "Front web functional test",
   "main": "index.js",
   "scripts": {
     "cypress:open": "cypress open",
     "test": "cypress run --spec \"**/*.feature\"",
-    "test:all": "cypress run --spec \"**/*.features\""
+    "test:all": "cypress run --spec \"**/*.features\"",
+    "lint": "./node_modules/.bin/eslint . --ext .js",
+    "lint:fix": "npm run lint -- --fix"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheBrainFamily/cypress-cucumber-example.git"
+    "url": "git+https://gitlab.ftven.net/yatta/video-front-web.git"
   },
   "keywords": [
-    "cypress",
-    "cucumber",
-    "testing"
+    "web",
+    "ftv"
   ],
   "author": "Lukasz Gandecki",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/TheBrainFamily/cypress-cucumber-example/issues"
-  },
-  "homepage": "https://github.com/TheBrainFamily/cypress-cucumber-example#readme",
   "dependencies": {
     "cypress": "^5.4.0",
     "cypress-cucumber-preprocessor": "^2.5.0"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
+  },
+  "devDependencies": {
+    "eslint": "^7.1.0"
   }
 }
